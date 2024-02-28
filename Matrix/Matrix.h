@@ -4,6 +4,9 @@
 #include <memory>
 #include <utility>
 
+#ifndef MATRIX_H
+#define MATRIX_H
+
 class Matrix {
 public:
   Matrix() = delete;
@@ -40,3 +43,5 @@ private:
   Matrix multiply(const Matrix &other);
   Matrix tr_multiply(const Matrix &other);
 };
+
+#endif
