@@ -32,7 +32,6 @@ private:
   int mRow = 1;
   int mSkipRow = 1;
   int mSkipCol = 1;
-  bool mIsTransposed = false; // not used yet
   std::unique_ptr<double[]> mContainer = nullptr;
   void fill(bool gauss = false);
   bool check_size(const Matrix &other) {
