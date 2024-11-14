@@ -7,8 +7,8 @@ int main() {
 
   Random::ManualSeed(0);
   Timer timer;
-  Matrix a(3000, 3000, true);
-  Matrix b(3000, 3000, true);
+  Matrix a(1000, 1000, true);
+  Matrix b(1000, 1000, true);
 
   timer.Tic();
   a.transpose();
