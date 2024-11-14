@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <random>
 
 void merge(std::vector<int> &arr,unsigned long left ,unsigned long mid ,unsigned long right){
     unsigned long ptr_left = left;
@@ -37,12 +38,20 @@ void merge_sort(std::vector<int>& arr,unsigned long left,unsigned long right){
 
 int main(){
 
-    std::vector<int> a = {10,5,3,1,9,7,3,6,2,0,6,2};
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    int n = 10000000;
+
+    // Define a distribution range for integers
+    std::uniform_int_distribution<int> dist(1, 10000);
+
+    std::vector<int> a(n);
+    for (auto &val:a){
+        val = dist(gen);
+    }
+
     merge_sort(a,0,a.size()-1);
 
-    for(const auto &val:a){
-        std::cout << val << "\n";
-    }
 
     return 0;
 }
