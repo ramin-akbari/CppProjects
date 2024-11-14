@@ -2,9 +2,9 @@
 #include <vector>
 
 void merge(std::vector<int> &arr,unsigned long left ,unsigned long mid ,unsigned long right){
-    int ptr_left = left;
-    int ptr_right = mid+1;
-    int index = 0;
+    unsigned long ptr_left = left;
+    unsigned long ptr_right = mid+1;
+    unsigned long index = 0;
     std::vector<int> temp(right-left+1);
 
     while (ptr_left <= mid && ptr_right<= right){
