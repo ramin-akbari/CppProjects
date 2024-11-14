@@ -1,25 +1,37 @@
 #include <iostream>
 #include <vector>
 
-void merge(std::vector<int> &read,std::vector<int> &write,int left ,int mid ,int right){
+void merge(std::vector<int> &arr,int left ,int mid ,int right){
     int ptr_left = left;
     int ptr_right = mid+1;
-    int ptr_write = left;
+    int index = left;
+    std::vector<int> temp(right-left+1);
+    std::copy(arr.begin()+left,arr.begin()+right+1,temp.begin());
 
     while (ptr_left <= mid && ptr_right<= right){
-        if (read[ptr_left] < read[ptr_right])
-            write[ptr_write] = read[ptr_left++];
+        if (temp[ptr_left] < temp[ptr_right])
+            arr[index] = temp[ptr_left++];
         else
-            write[ptr_write] = read[ptr_right++];
-        ++ptr_write;
+            arr[index] = temp[ptr_right++];
+        ++index;
     }
 
     while (ptr_left <= mid)
-        write[ptr_write++] = read[ptr_left++];
+        arr[index++] = temp[ptr_left++];
 
     while (ptr_right <= right)
-        write[ptr_write++] = read[ptr_right++];
+        arr[index++] = temp[ptr_right++];
 
+}
+
+void merge_sort(std::vector<int>& arr,int left,int right){
+    if (left >= right)
+        return;
+
+    int mid = (left+right)/2;
+    merge_sort(arr,left,mid);
+    merge_sort(arr,mid+1,right);
+    merge(arr,left,mid,right);
 }
 
 
@@ -27,13 +39,12 @@ void merge(std::vector<int> &read,std::vector<int> &write,int left ,int mid ,int
 
 int main(){
 
-    std::vector<int> a = {1,3,7,9,11,0,3,5,6,10};
-    std::vector<int> b(10);
-    merge(a,b,0,4,9);
+    std::vector<int> a = {1,5,3,6,10};
+    merge_sort(a,0,4);
 
-    for (const auto &val :b)
-        std::cout << val <<"\n";
-
+    for(const auto &val:a){
+        std::cout << val << "\n";
+    }
 
     return 0;
 }
